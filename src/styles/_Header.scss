@@ -1,7 +1,8 @@
-
-header {
+.header {
     display: flex;
-    justify-content: stretch;
+    justify-content: center;
+    position: fixed;
+    padding-left: 50px;
   .logo {
     width: 100px;
     height: 100px;

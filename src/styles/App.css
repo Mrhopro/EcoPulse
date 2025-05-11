@@ -1,15 +1,17 @@
-header {
+.header {
   display: flex;
-  justify-content: stretch;
+  justify-content: center;
+  position: fixed;
+  padding-left: 50px;
 }
-header .logo {
+.header .logo {
   width: 100px;
   height: 100px;
   background-color: none;
   border-radius: 50%;
   margin: 0 10px 10px;
 }
-header h1 {
+.header h1 {
   font-size: 2rem;
   text-align: center;
   margin: 0;
@@ -22,7 +24,7 @@ header h1 {
 .sidebar {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   height: 100vh;
@@ -235,6 +237,108 @@ header h1 {
     width: 0;
     transform: translateX(-100%);
   }
+}
+
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+}
+.register__form:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.register__form h2 {
+  font-family: "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #11492D;
+}
+.register__form .register__error {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #505050;
+  color: #dc3545;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.register__form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #505050;
+}
+.register__form label span {
+  margin-bottom: 0.25rem;
+}
+.register__form label input {
+  width: 90%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #dde2e9;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 0.25rem;
+}
+.register__form label input:focus {
+  outline: none;
+  border-color: #11492D;
+  box-shadow: 0 0 0 2px rgba(17, 73, 45, 0.2);
+}
+.register__form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #11492D;
+  color: #f8f9fa;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.register__form button:hover, .register__form button:focus {
+  background-color: #072014;
+  transform: translateY(-1px);
+}
+.register__form button:active {
+  transform: translateY(0);
+}
+.register__form .register__success {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #505050;
+  color: #28a745;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
 html, body {

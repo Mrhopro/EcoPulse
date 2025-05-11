@@ -1,0 +1,60 @@
+@import "../styles/Variables.scss";
+@import "../styles/Mixins.scss";
+
+.register {
+  @include flex-center;
+  height: 100vh;
+  &__form {
+    @include flex-column;
+    background-color: $background-white;
+    padding: $spacing-xl;
+    border-radius: $border-radius-lg;
+    @include card-shadow-large;
+    width: 100%;
+    max-width: 400px;
+
+    h2 {
+      @include heading-2;
+      text-align: center;
+      margin-bottom: $spacing-lg;
+      color: $primary-color;
+    }
+
+    .register__error {
+      @include small-text;
+      color: $danger-color;
+      margin-bottom: $spacing-md;
+      text-align: center;
+    }
+
+    label {
+      @include flex-column;
+      margin-bottom: $spacing-md;
+      font-weight: 500;
+      color: $text-body;
+
+      span {
+        margin-bottom: $spacing-xs;
+      }
+
+      input {
+        @include input-base;
+        margin-top: $spacing-xs;
+      }
+    }
+
+    button {
+      @include button-primary;
+      width: 100%;
+      margin-top: $spacing-md;
+      font-size: $font-size-base;
+    }
+
+    .register__success {
+      @include body-text;
+      color: $success-color;
+      text-align: center;
+      margin-top: $spacing-lg;
+    }
+  }
+}

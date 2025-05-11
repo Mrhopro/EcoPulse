@@ -173,7 +173,7 @@
 
 // Form elements
 @mixin input-base {
-  width: 100%;
+  width: 90%;
   padding: $spacing-sm $spacing-md;
   border: 1px solid lighten($text-muted, 20%);
   border-radius: $border-radius-sm;

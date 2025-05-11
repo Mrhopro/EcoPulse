@@ -1,86 +1,158 @@
-$primary-color: #21593D;
+// Variables
+$sidebar-width: 240px;
+$sidebar-collapsed-width: 70px;
+$header-height: 70px;
+$primary-color: #11492D;
+$background-dark: #1a2130;
+$background-hover: #2d3748;
+$text-color: #f8f9fa;
+$text-muted: #a0aec0;
+$border-color: #2d3748;
+$shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+$transition-speed: 0.3s;
+$border-radius: 6px;
 
-.sidebar {
-  grid-area: sidebar;
-  background: $primary-color;
-  color: #fff;
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
   display: flex;
   flex-direction: column;
-  width: 240px;
-  transition: width 0.3s ease;
+}
 
+// Sidebar Styles
+.sidebar {
+  @include flex-column;
+  height: 100vh;
+  width: $sidebar-width;
+  background-color: $background-dark;
+  color: $text-color;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all $transition-speed ease;
+  box-shadow: $shadow;
+  z-index: 100;
+  
   &.collapsed {
-    width: 64px;
-
-    .sidebar__link {
-      justify-content: center;
-      span { display: none; }
-    }
+    width: $sidebar-collapsed-width;
   }
-
-  &__header {
+  
+  // Header section
+  &-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    height: $header-height;
+    border-bottom: 1px solid $border-color;
   }
-
-  &__logo {
-    font-size: 1.25rem;
+  
+  &-logo {
+    color: $primary-color;
     margin: 0;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
   }
-
-  &__toggle {
-    background: none;
+  
+  &-toggle {
+    background: transparent;
     border: none;
-    color: #fff;
+    color: $text-muted;
     cursor: pointer;
+    @include flex-center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    transition: all $transition-speed ease;
+    
+    &:hover {
+      background-color: $background-hover;
+      color: $text-color;
+    }
   }
-
-  &__nav {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  
+  // Navigation section
+  &-nav {
+    @include flex-column;
+    flex-grow: 1;
+    padding: 1rem 0;
+    overflow-y: auto;
   }
-
-  &__link {
+  
+  &-link {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    color: #fff;
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: background 0.2s;
-
-    svg {
-      margin-right: 0.75rem;
-      font-size: 1.2rem;
+    color: $text-muted;
+    padding: 0.75rem 1rem;
+    transition: all $transition-speed ease;
+    margin: 0.25rem 0.75rem;
+    border-radius: $border-radius;
+    
+    &:hover, &.active {
+      background-color: $background-hover;
+      color: $text-color;
     }
-
-    &:hover,
+    
     &.active {
-      background: rgba(255,255,255,0.1);
+      border-left: 3px solid $primary-color;
     }
   }
-
-  &__footer {
+  
+  &-icon {
+    @include flex-center;
+    min-width: 24px;
+  }
+  
+  &-text {
+    margin-left: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  // Footer section
+  &-footer {
     padding: 1rem;
+    border-top: 1px solid $border-color;
   }
+}
 
-  &__logout {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
+// Logout button
+.logout-button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
 
-    svg {
-      margin-right: 0.75rem;
+// Responsive adjustments
+@media (max-width: 768px) {
+  .sidebar {
+    width: $sidebar-collapsed-width;
+    
+    &.collapsed {
+      width: 0;
+      padding: 0;
+      overflow: hidden;
     }
-
-    &:hover {
-      background: rgba(255,255,255,0.1);
+  }
+  
+  body {
+    padding-left: $sidebar-collapsed-width;
+    
+    .sidebar.collapsed {
+      padding-left: 0;
     }
   }
 }

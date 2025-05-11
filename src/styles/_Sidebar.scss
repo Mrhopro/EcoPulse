@@ -1,0 +1,86 @@
+$primary-color: #21593D;
+
+.sidebar {
+  grid-area: sidebar;
+  background: $primary-color;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  transition: width 0.3s ease;
+
+  &.collapsed {
+    width: 64px;
+
+    .sidebar__link {
+      justify-content: center;
+      span { display: none; }
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  &__logo {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+
+    svg {
+      margin-right: 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    &:hover,
+    &.active {
+      background: rgba(255,255,255,0.1);
+    }
+  }
+
+  &__footer {
+    padding: 1rem;
+  }
+
+  &__logout {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+
+    svg {
+      margin-right: 0.75rem;
+    }
+
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+  }
+}

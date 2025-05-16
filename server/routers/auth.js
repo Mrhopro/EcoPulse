@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const router = Router();
-const users = [];
+const users = []; // TODO: БД замість масиву
+const JWT_SECRET = process.env.JWT_SECRET;
 
+// Реєстрація нового користувача
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -32,5 +35,35 @@ router.post('/register', async (req, res) => {
     return res.status(500).json({ message: 'Внутрішня помилка сервера' });
   }
 });
+
+// Логін користувача
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email та пароль обов’язкові' });
+    }
+    const normalized = email.trim().toLowerCase();
+    const user = users.find(u => u.email === normalized);
+    if (!user) {
+      return res.status(401).json({ message: 'Невірний email або пароль' });
+    }
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(401).json({ message: 'Невірний email або пароль' });
+    }
+    // Створюємо токен
+    const token = jwt.sign(
+      { id: user.id, name: user.name, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+    return res.json({ token, name: user.name });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Серверна помилка' });
+  }
+});
+
 
 export default router;

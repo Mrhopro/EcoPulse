@@ -1,7 +1,7 @@
 .header {
   display: flex;
-  justify-content: center;
-  position: fixed;
+  justify-content: left;
+  position: relative;
   padding-left: 50px;
 }
 .header .logo {
@@ -21,10 +21,24 @@
   color: #11492D;
 }
 
+.app-layout {
+  position: relative;
+}
+
+.main {
+  transition: margin-left 0.3s ease;
+  margin-left: 240px;
+  padding: 1.5rem;
+}
+
+.main.collapsed {
+  margin-left: 70px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
@@ -47,6 +61,7 @@
   justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #2d3748;
+  position: relative;
 }
 .sidebar-header .sidebar-logo {
   display: flex;
@@ -244,6 +259,47 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: relative;
+}
+.register__logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #1f8753 0%, #5bcca5 100%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.register__logo .logo-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 0.5rem;
+  animation: spin 6s linear infinite;
+}
+.register__logo .logo-text {
+  font-family: "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #333333;
+  color: #ffffff;
+}
+.register__logo:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .register__form {
   display: flex;
@@ -343,6 +399,7 @@
 
 html, body {
   height: 100%;
+  text-decoration: none;
 }
 
 .btn {

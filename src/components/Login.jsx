@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../api/auth';
-import './Register.scss';
+import logo from '../images/Logo.png';
 
 export default function Login() {
-  const [form, setForm]     = useState({ email: '', password: '' });
-  const [error, setError]   = useState('');
-  const navigate             = useNavigate();
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,7 +31,7 @@ export default function Login() {
     <div className="register">
       {/* Логотип і назва */}
       <Link to="/" className="register__logo">
-        <img src="/logo192.png" alt="EcoPulse Logo" className="logo-icon"/>
+        <img src={logo} alt="EcoPulse Logo" className="logo-icon" />
         <span className="sidebar-text">EcoPulse</span>
       </Link>
 

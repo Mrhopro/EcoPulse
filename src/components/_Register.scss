@@ -4,6 +4,43 @@
 .register {
   @include flex-center;
   height: 100vh;
+  position: relative;
+  &__logo {
+    position: absolute;
+    top: $spacing-md;
+    left: $spacing-md;
+    margin-bottom: 0;  
+    background: linear-gradient(135deg, $primary-light 0%, $accent-light 100%);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      margin-right: $spacing-sm;
+      animation: spin 6s linear infinite;
+    }
+
+    .logo-text {
+      @include heading-2;
+      color: $background-white;
+    }
+
+    &:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  }
   &__form {
     @include flex-column;
     background-color: $background-white;

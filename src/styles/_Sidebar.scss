@@ -1,9 +1,24 @@
 @import "../styles/Mixins.scss";
 @import "../styles/Variables.scss";
 
+.app-layout {
+  position: relative;
+}
+
+.main {
+  transition: margin-left $transition-speed ease;
+  margin-left: $sidebar-width; 
+  padding: $content-padding
+}
+
+.main.collapsed {
+  margin-left: $sidebar-collapsed-width; 
+}
+
+
 .sidebar {
   @include flex-column;
-  position: relative;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
@@ -26,6 +41,7 @@
     @include flex-between;
     padding: $spacing-md $spacing-md;
     border-bottom: 1px solid $background-medium;
+    position: relative;
     
     .sidebar-logo {
       @include flex-start;

@@ -1,13 +1,14 @@
 // Import component styles
 @import "./_Header.scss";
 @import "./_Sidebar.scss";
-@import "../components/_Register.scss";
+@import "../components/Register.scss";
 // Import variables and mixins
 @import './Variables';
 @import './Mixins';
 
 html, body {
   height: 100%;
+  text-decoration: none;
 }
 
 // Button styles

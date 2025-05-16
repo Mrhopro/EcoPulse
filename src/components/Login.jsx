@@ -17,11 +17,8 @@ export default function Login() {
     setError('');
     try {
       const { data } = await loginUser(form);
-      // зберігаємо токен і ім'я
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('name', data.name);
-      // переходимо на головну
-      navigate('/');
+      localStorage.setItem("name", data.name);
+      navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || 'Помилка при вході');
     }

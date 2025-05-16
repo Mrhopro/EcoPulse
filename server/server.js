@@ -1,23 +1,38 @@
 import "dotenv/config";
-import dotenv from 'dotenv';
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import authRoutes from './routers/auth.js';
-
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import authRoutes from "./routers/auth.js";
+import { authMiddleware } from './middlewares/auth.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// ДОЗВОЛЯЄМО ВСІ ORIGIN (DEV ONLY!)
-app.use(cors());
+// CORS
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  credentials: true,
+}));
 
-// or:
-// app.use(cors({ origin: 'http://localhost:3000' }));
+// Парсери
+app.use(express.json());
+app.use(cookieParser());
 
-app.use(bodyParser.json());
-app.use('/auth', authRoutes);
+// Роутери
+app.use("/auth", authRoutes);
 
-app.listen(PORT, () => {
-  console.log(`API server running on http://localhost:${PORT}`);
+// Захищений приклад приватного роута
+app.get('/protected', authMiddleware, (req, res) => {
+  // доступна req.user
+  res.json({ message: `Hello ${req.user.name}`, user: req.user });
 });
+
+// Глобальний handler помилок
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: "Внутрішня помилка сервера" });
+});
+
+app.listen(PORT, () =>
+  console.log(`🟢 API server running on http://localhost:${PORT}`)
+);

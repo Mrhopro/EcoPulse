@@ -11,13 +11,14 @@ import Header from './elements/Header';
 import Sidebar from './elements/Sidebar';
 import Register from './components/Register';
 import Login from './components/Login';
+import Dashboard from './elements/Dashboard';
 import './styles/App.css';
 
 
 
 
 // Placeholder components для інших сторінок
-const Dashboard    = () => <div className="page-container"><h2>Dashboard</h2></div>;
+// const Dashboard    = () => <div className="page-container"><h2>Dashboard</h2></div>;
 const Activities   = () => <div className="page-container"><h2>Activities</h2></div>;
 const LocalEcology = () => <div className="page-container"><h2>Local Ecology</h2></div>;
 const Challenges   = () => <div className="page-container"><h2>Challenges</h2></div>;
@@ -69,6 +70,7 @@ export default function Root() {
     <BrowserRouter>
       <Routes>
 
+        <Route path="/Dashboard" element={<App />} />
         <Route path="/register" element={<App />} />
         <Route path="/login" element={<App />} />
         <Route path="/*" element={<App />} />

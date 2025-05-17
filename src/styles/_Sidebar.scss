@@ -1,5 +1,5 @@
-@import "../styles/Mixins.scss";
-@import "../styles/Variables.scss";
+@import "./Mixins";
+@import "./Variables";
 
 .app-layout {
   position: relative;
@@ -45,9 +45,9 @@
     
     .sidebar-logo {
       @include flex-start;
-      color: $primary-color;
+      color: $accent-color;
       font-family: $font-secondary;
-      font-size: $font-size-xl;
+      font-size: $font-size-3xl;
       font-weight: 600;
       margin: 0;
       @include truncate;

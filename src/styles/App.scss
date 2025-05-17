@@ -1,7 +1,8 @@
 // Import component styles
-@import "./_Header.scss";
-@import "./_Sidebar.scss";
-@import "../components/Register.scss";
+@import "./_Header";
+@import "./_Sidebar";
+@import "../components/Register";
+@import "./Dashboard";
 // Import variables and mixins
 @import './Variables';
 @import './Mixins';

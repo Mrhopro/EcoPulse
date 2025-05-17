@@ -1,0 +1,62 @@
+@import './Variables';
+@import './Mixins';
+
+.Welcome-section {
+    @include flex-column;
+    background-color: rgba(52, 166, 127, 0.2);
+    border-radius: $border-radius;
+    padding-left: $spacing-lg;
+    .Welcome{
+        font-size: $font-size-2xl;
+        font-weight: 600;
+        color: $text-title;
+        margin-bottom: 0px;
+        font-family: $font-primary;
+        .Sub-Welcome{
+            font-size: $font-size-lg;
+            font-weight: 400;
+            color: $text-title;
+            margin-top: 5px;
+            font-family: $font-secondary;
+        }
+    }
+}
+
+.Dashboard-stats{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    font-family: $font-primary;
+    .Dashboard-card{
+        @include flex-column-reverse;
+        background-color: $background-white;
+        border-radius: $border-radius;
+        padding: $spacing-lg;
+        margin-bottom: $spacing-lg;
+        box-shadow: $shadow-light;
+        transition: all $transition-speed ease;
+        &:hover{
+            box-shadow: $shadow-medium;
+            transform: translateY(-2px);
+        }
+        .Card-title{
+
+            font-size: $font-size-lg;
+            font-weight: 600;
+            color: $text-title;
+            margin-bottom: $spacing-sm;
+        }
+    }
+}
+.activity-chart-card {
+    background-color: $background-medium;
+    padding: $spacing-lg;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-medium;
+    margin-top: $spacing-xl;
+  }
+  .activity-chart-title {
+    @include heading-3;
+    color: $text-light;
+    margin-bottom: $spacing-md;
+  }

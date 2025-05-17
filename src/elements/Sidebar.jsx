@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LuLeaf } from "react-icons/lu";
 import { NavLink } from 'react-router-dom';
 import {
   FiHome,
@@ -51,6 +52,7 @@ const Sidebar = ({ onToggle }) => {
   return (
     <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
+      {!collapsed && <div className="logo-icon"> <LuLeaf size={40} stroke='#34a67f' /> </div>}
         {!collapsed && <h2 className="sidebar-logo">EcoPulse</h2>}
         <button 
           className="sidebar-toggle"

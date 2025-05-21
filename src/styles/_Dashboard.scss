@@ -1,63 +1,182 @@
-@import './Variables';
-@import './Mixins';
+// src/components/Dashboard.scss
+@import "../styles/Variables.scss";
+@import "../styles/Mixins.scss";
 
-.Welcome-section {
-    @include flex-column;
+.dashboard {
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__error {
+    @include heading-2;
+    color: $danger-color;
+    text-align: center;
+  }
+
+  &__welcome {
+    @include flex-between;
+    flex-wrap: wrap;
+    align-items: baseline;
     background-color: rgba(52, 166, 127, 0.2);
     border-radius: $border-radius;
     padding-left: $spacing-lg;
-    .Welcome{
-        font-size: $font-size-2xl;
-        font-weight: 600;
-        color: $text-title;
-        margin-bottom: 0px;
-        font-family: $font-primary;
-        .Sub-Welcome{
-            font-size: $font-size-lg;
-            font-weight: 400;
-            color: $text-title;
-            margin-top: 5px;
-            font-family: $font-secondary;
-        }
-    }
-}
 
-.Dashboard-stats{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    font-family: $font-primary;
-    .Dashboard-card{
-        @include flex-column-reverse;
-        background-color: $background-white;
-        border-radius: $border-radius;
-        padding: $spacing-lg;
-        margin-bottom: $spacing-lg;
-        box-shadow: $shadow-light;
-        transition: all $transition-speed ease;
-        &:hover{
-            box-shadow: $shadow-medium;
-            transform: translateY(-2px);
-        }
-        .Card-title{
-            font-size: $font-size-lg;
-            font-weight: 600;
-            color: $text-title;
-            margin-bottom: $spacing-sm;
-        }
+    & > * {
+      margin-bottom: $spacing-sm;
+      padding-right: $spacing-lg;
     }
-}
-.activity-chart-card {
-    background-color: $background-light;
+  }
+
+  &__title {
+    @include heading-1;
+    color: $accent-color;
+  }
+
+  &__subtitle {
+    @include body-text;
+    color: #226d53;
+
+    .dashboard__highlight {
+      color: $accent-color;
+      font-weight: 600;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: $spacing-md;
+  }
+
+  &__card {
+    background-color: $background-dark;
+    padding: $spacing-md;
+    border-radius: $border-radius;
+    @include card-shadow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &-title {
+      @include small-text;
+      color: $text-light;
+      margin-bottom: $spacing-xs;
+      text-transform: uppercase;
+    }
+
+    &-value {
+      @include heading-2;
+      color: $primary-color;
+    }
+  }
+
+  &__chart,
+  &__ecology {
+    background-color: $background-medium;
     padding: $spacing-lg;
     border-radius: $border-radius-lg;
-    box-shadow: $shadow-medium;
+    width:600px;
+    @include card-shadow-large;
+
+    & .dashboard__section-title {
+      @include heading-3;
+      color: $text-light;
+      margin-bottom: $spacing-md;
+    }
+  }
+   &__charts {
+    display: flex;
+    gap: $spacing-lg;
     margin-top: $spacing-xl;
-    width: 400px;
-    .activity-chart-title {
-    @include heading-3;
-    color: $text-light;
-    margin-bottom: $spacing-md;
+    // Якщо екран вузький, ставимо стовпчиком
+    @include respond-below(md) {
+      flex-direction: column;
+    }
   }
+
+  &__chart {
+    background-color: $background-medium;
+    padding: $spacing-lg;
+    border-radius: $border-radius-lg;
+    @include card-shadow-large;
+    display: flex;
+    flex-direction: column;
+
+    &--main {
+      flex: 1;
+    }
+    &--secondary {
+      flex: 1.5;
+    }
+
+    .dashboard__section-title {
+      @include heading-3;
+      color: $text-light;
+      margin-bottom: $spacing-md;
+    }}
+   &__last-challenges {
+    background-color: $background-medium;
+    padding: $spacing-lg;
+    border-radius: $border-radius-lg;
+    @include card-shadow-large;
+    margin-top: $spacing-xl;
+
+    .dashboard__section-title {
+      @include heading-3;
+      color: $text-light;
+      margin-bottom: $spacing-md;
+    }
+
+    & .last-challenges__list {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+
+    .challenge-card {
+      @include flex-between;
+      background-color: $background-dark;
+      padding: $spacing-md;
+      border-radius: $border-radius;
+      @include card-shadow;
+
+      &__title {
+        @include body-text;
+        color: $text-light;
+        font-weight: 600;
+      }
+      &__date {
+        @include small-text;
+        color: $text-muted;
+      }
+      &__status {
+        @include small-text;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-sm;
+        text-transform: uppercase;
+
+        &--completed {
+          background-color: rgba($success-color, 0.1);
+          color: $success-color;
+        }
+        &--missed {
+          background-color: rgba($danger-color, 0.1);
+          color: $danger-color;
+        }
+        &--pending {
+          background-color: rgba($warning-color, 0.1);
+          color: $warning-color;
+        }
+      }
+    }
   }
-  
+}
+
+// Адаптивність
+@include respond-below(md) {
+  .dashboard {
+    padding: $spacing-md;
+  }
+}

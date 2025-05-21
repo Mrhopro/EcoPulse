@@ -42,7 +42,6 @@ function Layout({ sidebarCollapsed, onToggle }) {
           <Route path="/me" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-        <LocalEcology />
       </main>
     </>
   );

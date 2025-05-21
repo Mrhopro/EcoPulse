@@ -1,4 +1,5 @@
 import "dotenv/config";
+import envRoutes from "./routers/env.js";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 // Роутери
 app.use("/auth", authRoutes);
+app.use("/api/env", envRoutes);
 
 // Захищений приклад приватного роута
 app.get('/protected', authMiddleware, (req, res) => {

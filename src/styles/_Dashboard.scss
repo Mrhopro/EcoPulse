@@ -40,7 +40,6 @@
             transform: translateY(-2px);
         }
         .Card-title{
-
             font-size: $font-size-lg;
             font-weight: 600;
             color: $text-title;
@@ -49,14 +48,16 @@
     }
 }
 .activity-chart-card {
-    background-color: $background-medium;
+    background-color: $background-light;
     padding: $spacing-lg;
     border-radius: $border-radius-lg;
     box-shadow: $shadow-medium;
     margin-top: $spacing-xl;
-  }
-  .activity-chart-title {
+    width: 400px;
+    .activity-chart-title {
     @include heading-3;
     color: $text-light;
     margin-bottom: $spacing-md;
   }
+  }
+  

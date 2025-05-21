@@ -1,0 +1,41 @@
+@import "../styles/Variables.scss";
+@import "../styles/Mixins.scss";
+
+.local-ecology {
+  background-color: $background-medium;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-medium;
+  margin-top: $spacing-xl;
+
+  .section-title {
+    @include heading-3;
+    color: $text-light;
+    margin-bottom: $spacing-md;
+  }
+
+  .ecology-cards {
+    display: flex;
+    gap: $spacing-md;
+
+    .card {
+      flex: 1;
+      background-color: $background-dark;
+      padding: $spacing-md;
+      border-radius: $border-radius;
+      @include card-shadow;
+
+      h4 {
+        @include small-text;
+        color: $text-muted;
+        margin-bottom: $spacing-xs;
+        text-transform: uppercase;
+      }
+      p {
+        @include heading-2;
+        color: $primary-color;
+        margin: 0;
+      }
+    }
+  }
+}

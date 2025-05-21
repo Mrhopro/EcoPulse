@@ -12,6 +12,7 @@ import Sidebar from './elements/Sidebar';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './elements/Dashboard';
+import LocalEcology from "./components/LocalEcology";
 import './styles/App.css';
 
 
@@ -20,7 +21,7 @@ import './styles/App.css';
 // Placeholder components для інших сторінок
 // const Dashboard    = () => <div className="page-container"><h2>Dashboard</h2></div>;
 const Activities   = () => <div className="page-container"><h2>Activities</h2></div>;
-const LocalEcology = () => <div className="page-container"><h2>Local Ecology</h2></div>;
+// const LocalEcology = () => <div className="page-container"><h2>Local Ecology</h2></div>;
 const Challenges   = () => <div className="page-container"><h2>Challenges</h2></div>;
 const Leaderboard  = () => <div className="page-container"><h2>Leaderboard</h2></div>;
 const Profile      = () => <div className="page-container"><h2>Profile</h2></div>;
@@ -33,14 +34,15 @@ function Layout({ sidebarCollapsed, onToggle }) {
       <Sidebar onToggle={onToggle} />
        <main className={`main ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <Routes>
-          <Route path="/"       element={<Dashboard />} />
-          <Route path="/act"    element={<Activities />} />
-          <Route path="/eco"    element={<LocalEcology />} />
-          <Route path="/chal"   element={<Challenges />} />
-          <Route path="/lead"   element={<Leaderboard />} />
-          <Route path="/me"     element={<Profile />} />
-          <Route path="*"      element={<Navigate to="/" replace />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/act" element={<Activities />} />
+          <Route path="/eco" element={<LocalEcology />} />
+          <Route path="/chal" element={<Challenges />} />
+          <Route path="/lead" element={<Leaderboard />} />
+          <Route path="/me" element={<Profile />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <LocalEcology />
       </main>
     </>
   );

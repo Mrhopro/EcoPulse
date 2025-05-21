@@ -30,8 +30,8 @@ export default function ActivityChart() {
               <stop offset="95%" stopColor="#34a67f" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <XAxis dataKey="date" tick={{ fill: '#1a2130' }} axisLine={false} tickFormatter={(d) => d.slice(5)} />
-          <YAxis tick={{ fill: '#1a2130' }} axisLine={false} />
+          <XAxis dataKey="date" tick={{ fill: '#a0aec0' }} axisLine={false} tickFormatter={(d) => d.slice(5)} />
+          <YAxis tick={{ fill: '#a0aec0' }} axisLine={false} />
           <Tooltip contentStyle={{ backgroundColor: '#2d3748', border: 'none' }} itemStyle={{ color: '#34a67f' }} />
           <Line type="monotone" dataKey="points" stroke="#34a67f" strokeWidth={3} dot={{ r: 5, fill: '#34a67f' }} activeDot={{ r: 7 }} />
         </LineChart>

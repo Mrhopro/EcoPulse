@@ -21,7 +21,7 @@ export default function MonthlyChart() {
       <h4 className="chart-card__title">Активність за місяць</h4>
       <ResponsiveContainer width="100%" height={250}>
         <LineChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0)" />
           <XAxis dataKey="day" tick={{ fill: "#a0aec0" }} axisLine={false} />
           <YAxis tick={{ fill: "#a0aec0" }} axisLine={false} />
           <Tooltip contentStyle={{ backgroundColor: "#2d3748", border: "none" }}

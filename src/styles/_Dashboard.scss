@@ -141,6 +141,12 @@
       padding: $spacing-md;
       border-radius: $border-radius;
       @include card-shadow;
+      &__complete-btn {
+      margin-left: auto;
+      padding: $spacing-xs $spacing-md;
+      @include button-secondary;
+      font-size: $font-size-sm;
+      }
 
       &__title {
         @include body-text;

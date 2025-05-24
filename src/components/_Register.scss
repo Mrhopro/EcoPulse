@@ -43,7 +43,7 @@
   }
   &__form {
     @include flex-column;
-    background-color: $background-white;
+    background-color: $background-dark;
     padding: $spacing-xl;
     border-radius: $border-radius-lg;
     @include card-shadow-large;
